@@ -1,12 +1,17 @@
 #include "mainframe.h"
 #include <QPainter>
 #include <QTimerEvent>
+#include <QDateTime>
 
 MainFrame::MainFrame(QWidget *parent)
 	: QWidget(parent), m_times(0)
 {
 	ui.setupUi(this);
+	QDateTime time = QDateTime::currentDateTime();//获取系统现在的时间
+	QString str = time.toString("yyyy-MM-dd hh:mm:ss ddd"); //设置显示格式
+	ui.label_time->setText(str);//在标签上显示时间
 
+	
 	m_timerId = startTimer(600);
 }
 
